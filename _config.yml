@@ -95,27 +95,6 @@ pagination_dir: page
 ## Themes: https://hexo.io/themes/
 theme: next
 
-# Next Setting
-## navigation
-theme_config:
-#  menu:
-#    home: /
-#    archives: /archives
-#    tags: /tags
-#    search: /search
-  since: 2017
-  local_search:
-    enable: true
-## avatar 个人头像
-  avatar: /images/avatar.jpg
-  post_meta:
-    item_text: true
-    created_at: true
-    updated_at:  # 这里可以开关“更新时间”
-      enable: false
-      another_day: false
-  categories: true
-
 
 # Local Search
 search:
@@ -137,3 +116,10 @@ deploy:
   branch: master
   name: kenmjlee
   email: kenmjlee@users.noreply.github.com
+
+symbols_count_time:
+  symbols: true
+  time: true
+  total_symbols: true
+  total_time: true
+  exclude_codeblock: false
