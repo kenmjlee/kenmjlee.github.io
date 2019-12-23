@@ -30,7 +30,7 @@ jobs:
         THEME_BRANCH: master
       run: |
         mkdir -p ~/.ssh/
-        echo "$HEXO_DEPLOY_PRI" > ~/.ssh/id_rsa
+        echo "$HEXO_DEPLOY_PRI" | tr -d '\r' > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
         ssh-keyscan github.com >> ~/.ssh/known_hosts
         git config --global user.name 'kenmjlee'
@@ -38,8 +38,7 @@ jobs:
         npm i -g hexo-cli
         npm i
         git clone --branch ${THEME_BRANCH} --depth=10  git@github.com:probberechts/hexo-theme-cactus.git themes/cactus
-        git checkout -b ${THEME_BRANCH}
       
     - name: Build
       run: |
-        hexo clean && hexo g -d
+        hexo g -d
