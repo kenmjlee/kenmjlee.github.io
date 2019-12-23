@@ -8,7 +8,7 @@ subtitle: ''
 description: 过气码农现职PM，Geek心不死，Geek性不改。
 author: kenmjlee
 language: en
-timezone: Asia/Hong_Kong
+timezone: 
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
@@ -95,26 +95,20 @@ pagination_dir: page
 ## Themes: https://hexo.io/themes/
 theme: next
 
-# Deployment
-## Docs: https://hexo.io/docs/deployment.html
-deploy:
-  type: git
-  repo: git@github.com:kenmjlee/kenmjlee.github.io.git
-  branch: master
-  name: kenmjlee
-  email: kenmjlee@users.noreply.github.com
-
 # Next Setting
 ## navigation
 theme_config:
-  menu:
-    home: /
-    archives: /archives
-    tags: /tags
-    search: /search
+#  menu:
+#    home: /
+#    archives: /archives
+#    tags: /tags
+#    search: /search
   since: 2017
   local_search:
     enable: true
+## avatar 个人头像
+  avatar: /images/avatar.jpg
+
 
 # Local Search
 search:
@@ -128,5 +122,11 @@ sitemap:
     path: sitemap.xml
     template: ./source/sitemap_template.xml
 
-# avatar 个人头像
-avatar: /images/avatar.jpg
+# Deployment
+## Docs: https://hexo.io/docs/deployment.html
+deploy:
+  type: git
+  repo: git@github.com:kenmjlee/kenmjlee.github.io.git
+  branch: master
+  name: kenmjlee
+  email: kenmjlee@users.noreply.github.com
