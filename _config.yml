@@ -108,11 +108,13 @@ deploy:
 ## navigation
 theme_config:
   menu:
-    Home: /
-    Archives: /archives
-    Tags: /tags
-    Search: /search
+    home: /
+    archives: /archives
+    tags: /tags
+    search: /search
   since: 2017
+  local_search:
+    enable: true
 
 # Local Search
 search:
