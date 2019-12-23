@@ -8,7 +8,7 @@ subtitle: ''
 description: 过气码农现职PM，Geek心不死，Geek性不改。
 author: kenmjlee
 language: en
-timezone:
+timezone: Asis/HongKong
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
@@ -27,7 +27,7 @@ tag_dir: tags
 archive_dir: archives
 category_dir: categories
 code_dir: downloads/code
-i18n_dir: :language
+i18n_dir: :lang
 skip_render:
 
 
@@ -104,13 +104,13 @@ deploy:
   name: kenmjlee
   email: kenmjlee@users.noreply.github.com
 
-# Cactus Setting
+# Next Setting
 ## navigation
-nav:
+menu:
   Home: /
-  Writing: /archives/
-  Tags: /tag/
-  Search: /search/
+  Archives: /archives
+  Tags: /tags
+  Search: /search
 
 # Show all posts
 posts_overview:
@@ -127,3 +127,8 @@ search:
 sitemap:
     path: sitemap.xml
     template: ./source/sitemap_template.xml
+
+# avatar 个人头像
+avatar: /images/avatar.jpg
+
+since: 2017
