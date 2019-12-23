@@ -44,4 +44,4 @@ jobs:
         git clone git@github.com:theme-next/theme-next-pace --depth=1 themes/next/source/lib/pace      
     - name: Build
       run: |
-        hexo generate && hexo deploy
+        hexo clean && hexo generate && hexo deploy

@@ -972,7 +972,7 @@ three:
   enable: false
   delay: false # Set true to further delay loading
   three_waves: false
-  canvas_lines: true
+  canvas_lines: false
   canvas_sphere: false
 
 # Canvas-nest
@@ -980,7 +980,7 @@ three:
 # For more information: https://github.com/hustcc/canvas-nest.js
 canvas_nest:
   enable: false
-  onmobile: true # display on mobile or not
+  onmobile: false # display on mobile or not
   color: "0,0,255" # RGB values, use `,` to separate
   opacity: 0.5 # the opacity of line: 0~1
   zIndex: -1 # z-index property of the background
