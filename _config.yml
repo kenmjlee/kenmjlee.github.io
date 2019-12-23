@@ -107,7 +107,14 @@ theme_config:
   local_search:
     enable: true
 ## avatar 个人头像
-avatar: /images/avatar.jpg
+  avatar: /images/avatar.jpg
+  post_meta:
+    item_text: true
+    created_at: true
+    updated_at:  # 这里可以开关“更新时间”
+      enable: false
+      another_day: false
+  categories: true
 
 
 # Local Search
