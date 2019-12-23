@@ -42,4 +42,4 @@ jobs:
       
     - name: Build
       run: |
-        hexo generate && hexo clean && hexo deploy
+        hexo clean && hexo g -d
