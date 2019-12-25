@@ -1,7 +1,7 @@
 ---
 title: The Economist | The next 50 years in space 精读
 date: 2019-12-25 23:27:00
-catergories: 
+categories: 
    - 西洋风
 tags:
    - economist
