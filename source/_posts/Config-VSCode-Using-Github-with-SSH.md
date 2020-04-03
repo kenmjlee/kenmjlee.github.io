@@ -85,16 +85,15 @@ What the hell!
 
 #### 用 Visual Studio Code 拉取代码
 
-现在，我们的 github 已经可以通过 ssh 进行各种操作，自以为在 vs code 内也可以顺利之际，
+现在，我们的 github 已经可以通过 ssh 进行各种操作，自以为在 VS Code 内也可以顺利之际，
 
 > Git Error: Permission Denied
 
 某种族人问号(??)，原来 VS Code 根本不支持 ssh-agent，怎办呢？
 
-还好，Microsoft 这点上想得挺周到的，做了个叫 Remote SSH 的 扩展，就是图中（我懒、省空间，图片是我“借”别人的）的这个，
+还好，Microsoft 这点上想得挺周到的，做了个叫 Remote Development 的 扩展，就是图中（我懒、省空间，图片是我“借”别人的）的这个，
 
-![扩展](https://img2018.cnblogs.com/blog/939319/201906/939319-20190615104738767-382799129.png 'Remote SSH')
-
+![扩展](https://i.loli.net/2020/04/03/wKcdLiI154xYqMU.png 'Remote SSH')
 
 
 装完之后，打开配置文件，把以下的都弄进去。完美！
@@ -108,7 +107,7 @@ Host github.com
 
 
 
-![配置](https://img2018.cnblogs.com/blog/939319/201906/939319-20190615104946024-363936338.png 'Configuration')
+![配置](https://i.loli.net/2020/04/03/agOFvzXVyH39QcN.png 'Configuration')
 
 
 
