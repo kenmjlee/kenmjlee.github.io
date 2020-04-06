@@ -608,8 +608,8 @@ reading_progress:
 
 # Disqus
 disqus:
-  enable: false
-  shortname:
+  enable: true
+  shortname: wind-without-direction
   count: true
   lazyload: false
 
