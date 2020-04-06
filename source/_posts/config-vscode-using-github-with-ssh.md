@@ -93,8 +93,7 @@ What the hell!
 
 还好，Microsoft 这点上想得挺周到的，做了个叫 Remote Development 的 扩展，就是图中（我懒、省空间，图片是我“借”别人的）的这个，
 
-![扩展](https://i.loli.net/2020/04/03/wKcdLiI154xYqMU.png 'Remote SSH')
-
+![扩展](https://i.loli.net/2020/04/06/oqNJwMRWcpSnmd9.png 'Remote SSH')
 
 装完之后，打开配置文件，把以下的都弄进去。完美！
 
