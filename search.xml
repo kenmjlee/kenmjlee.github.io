@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>回归</title>
+    <url>/2019/06/11/back-in-2019/</url>
+    <content><![CDATA[<p>作为一只曾经的猿，还是觉得在Github上安家比较适合。到底写些什么目前还不太清楚，但尽量尽量只谈风月，不论国事。过去的一年又发生了很多事，进步总是有的，不过还没有达到自己的要求。离2019结束只剩半年，希望继续将微小的习惯逐步改善。</p>
+]]></content>
+      <categories>
+        <category>不基的风</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>从 VS Code 配置 Github SSH 及踩过的坑</title>
+    <url>/2020/04/02/config-vscode-using-github-with-ssh/</url>
+    <content><![CDATA[<p>还是个码农和比较 geek 的时候，一直是用 SourceTree 来 push 代码（包括这是 blog 的文章）。后来荒废了，最近又要重操旧业，决定一切都迁移到VS Code，连 SourceTree 都省了。但 Code 的最大问题是 Push 的时候总是要问用户名和密码，于是就转到 SSH 省点心。</p>
+<h3 id="生成-SSH-Key">生成 SSH Key</h3>
+<p>一、 在 macOS 下的 terminal 里使用 ssh-keygen 生在公钥和私钥文件，</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -b 4096 -C <span class="string">'github的邮箱'</span></span><br></pre></td></tr></table></figure>
+<p>二、接着，命令会询问文件存放的位置和是否带密码， 直接无视就好了，</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Enter file <span class="keyword">in</span> <span class="built_in">which</span> to save the key (/Users/you/.ssh/id_rsa):</span><br><span class="line">Enter passphrase (empty <span class="keyword">for</span> no passphrase):    </span><br><span class="line">Enter same passphrase again:</span><br></pre></td></tr></table></figure>
+<p>三、看到以下就内容就生成好了，</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">+---[RSA 4096]----+</span><br><span class="line">|.oo&#x3D;             |</span><br><span class="line">|o.&#x3D;..   ..       |</span><br><span class="line">|.o .o  o+.       |</span><br><span class="line">|. .  &#x3D;++...      |</span><br><span class="line">|.    .B.S+ .     |</span><br><span class="line">| .     Bo.o..    |</span><br><span class="line">|..  . +..&#x3D;o.o    |</span><br><span class="line">|+. . . .&#x3D; o*.    |</span><br><span class="line">|ooo   .. ...Eo   |</span><br><span class="line">+----[SHA256]-----+</span><br></pre></td></tr></table></figure>
+<p>四、将 id_rsa.pub 内容复制到 github 账号的 setting 下，</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">`pbcopy &lt; ~/.ssh/id_rsa.pub`</span><br></pre></td></tr></table></figure>
+<p>五、一切搞好就之后，就是紧张的刺激的踩坑环节！</p>
+<h3 id="挖坑复挖坑，坑坑何其多">挖坑复挖坑，坑坑何其多</h3>
+<p>按常理，添加 ssh key 之后，使用 ssh-agent 就可以把私钥和公钥文件拿走，但添加 ssh-agent 时出现了以下内容：</p>
+<blockquote>
+<p>Permissions 0644 for ‘id_rsa’ are too open.</p>
+<p>It is required that your private key files are NOT accessible by others.</p>
+<p>This private key will be ignored.</p>
+</blockquote>
+<p>What the hell!</p>
+<p>文件权限太高也是罪。只能将权限降到 600，<code>ssh -T git@github.com</code> 一切顺利。</p>
+<h4 id="用-Visual-Studio-Code-拉取代码">用 Visual Studio Code 拉取代码</h4>
+<p>现在，我们的 github 已经可以通过 ssh 进行各种操作，自以为在 VS Code 内也可以顺利之际，</p>
+<blockquote>
+<p>Git Error: Permission Denied</p>
+</blockquote>
+<p>某种族人问号(??)，原来 VS Code 根本不支持 ssh-agent，怎办呢？</p>
+<p>还好，Microsoft 这点上想得挺周到的，做了个叫 Remote Development 的 扩展，就是图中（我懒、省空间，图片是我“借”别人的）的这个，</p>
+<p><img src="https://i.loli.net/2020/04/06/oqNJwMRWcpSnmd9.png" alt="扩展" title="Remote SSH"></p>
+<p>装完之后，打开配置文件，把以下的都弄进去。完美！</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Host github.com</span><br><span class="line">  HostName github.com</span><br><span class="line">  User github的username</span><br><span class="line">  IdentityFile &#x2F;Users&#x2F;you&#x2F;.ssh&#x2F;id_rsa</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2020/04/03/agOFvzXVyH39QcN.png" alt="配置" title="Configuration"></p>
+<p>以上搞好以后，就可能愉快地使用 VS Code 管理代码了。是不是发现问题了？对的，就是如果不是想在 terminal 里面使用 git，那 ssh-agent 的意义根本就没有！！！</p>
+]]></content>
+      <categories>
+        <category>技术风</category>
+      </categories>
+      <tags>
+        <tag>VS Code</tag>
+        <tag>github</tag>
+        <tag>macOS</tag>
+        <tag>ssh</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Netgear R6250的固件果然还是DD-WRT最相配</title>
+    <url>/2018/01/20/ddwrt-is-a-good-friend-of-r6250/</url>
+    <content><![CDATA[<p>koolshare团队的确是大牛，在advanced tomato的基础上加入了梅林的软件中心，令操作某些插件的确很方便。就这样入坑了。目前koolshare团队编译的<a href="http://koolshare.cn/thread-98787-1-1.html">固件</a>基于3.4-138，是挺不错的版本。</p>
+<p>从DD-WRT安装到Tomato其实很简单，但笔者的经历可以用坎坷来形容。但作为一名中期懒癌伸手党，有些问题就懒得注册了去报，自己先记着。待有缘人看到再说吧，</p>
+<ol>
+<li>
+<p>下载固件 — 这小机率的事情也让给遇上了；下好了包准备开刷，等等，为什么包名是EA6700的？再下一次，下对了。R6250的！难道楼主发现放错了重新上传？于是仔细观察下，原来自xiaomi-R1DX以下的链接，型号和版本号中间的破折号“-”，它们的链接都是EA6700的链接，两边倒是对的……这也能碰上，注定接下来的周末就这样被废掉。</p>
+</li>
+<li>
+<p>刷机 — 问过谷歌大神，DD-WRT可以直刷，清nvram，刷后30-30-30就能用了。对吧，很简单吧？ 可是操作完变砖了。考虑到是不是DD-WRT的版本太旧，于是用nmrpflash救砖升到最新版，再来一遍……又砖了，无限重启。实在没办法了，想想可能还是从原厂刷入比较妥，于是重来一遍。从原厂到过渡固件一切正常，最后一步……双砖了。如是者从晚上8点到凌晨1点，来来回回把固件、nvram、硬重置弄了不下数十遍，仍然不成功。</p>
+<p>翌日，再试了好几遍还是不成功，可能睡好一觉思维清晰了不少。看看怎样逐一排查问题，第一件就是把外挂硬盘拔了。这一拔果真不得了，竟然启动成功提示输入帐号密码。不过，帐号竟然不是admin/admin，试了一千种可能包括网上说的。依然不行，又只能重刷了。一次成功，应该是ext[234]的驱动有问题，把硬盘换到NTFS就好了。</p>
+</li>
+<li>
+<p>DLNA — 能硬盘，当然是把BT和DLNA开上，变成视频中心。因为tomato里nvram保存的ms_dirs是&quot;/mnt&lt;&quot;，所以这是无法在网页上修改它的路径，还一时手欠把这默认目录给删了后再也不能重新添加，唯一的办法就是重置。然后再也不敢乱改了。</p>
+</li>
+<li>
+<p>aria2 &amp; aria2ui — 软件中心的aria2能设置的选项太少了，装了aria2ui后发现改过的设置每次重启或者过了一会儿就会变成默认值，不过对tomato没有太多的了解也不知道在哪里修改配置文件。也就放弃了，将就着用。</p>
+</li>
+<li>
+<p>USE支持 — 这也是要吐槽的一项，因为硬盘的挂载在不知不觉间就会sda-&gt;sdb-&gt;sdc这样切换，设置好的ftp路径，DLNA路径变会无效了。但因为ext驱动的原因，又不能对ntfs格式添加label，于是又无解了。</p>
+</li>
+<li>
+<p>WIFI — WIFI信号太弱应该是下狠心换回DD-WRT的诱因。无论改国家到新加坡、扫描一个没人用的频道、把功率加大，又或者把频宽从80 Mhz改到40 Mhz。曾经能连上WIFI的角落一直扫不出信号。运行一周后，就连能连的2.4G也变得无力，连上后也只能3Mbps, RSI 99 dBm。连最后的昏招，不隐藏SSID试了一点改善也没有。</p>
+</li>
+</ol>
+<p>写到这里并不是说advanced tomato有多不好，可能只是在R6250上表现不佳，毕竟这款路由也是奇葩（当初贪便宜买的）。但目前种种体验倒是令人怀念起DD-WRT（只要不是装了$$，dnsmasq会自杀），保证跑上个把月不是问题。就这样，又回归到DD-WRT的怀抱，希望迟一点能看到DD-WRT也有自己的软件中心，那这样切换$$节点和规则就轻松多了。</p>
+]]></content>
+      <categories>
+        <category>技术风</category>
+      </categories>
+      <tags>
+        <tag>netgear</tag>
+        <tag>路由器</tag>
+        <tag>固件</tag>
+        <tag>dd-wrt</tag>
+        <tag>tomato</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>关注写作就好，把Hexo部署交给Travis CI</title>
+    <url>/2017/12/12/deploy-hexo-by-travis-ci/</url>
+    <content><![CDATA[<p>曾经断断续续地在各类博客网站写过日记，可是倒闭的倒闭，被封的被封，要么就是主题太丑操作不便。直至遇上了github page + Jekyll，不过还要自己改template又要每次都要本地编译部署，写着写着又放弃了。后来在研究Travis CI，偶然发现不少大牛都在使用它来部署github page，于是再次入坑。</p>
+<p>Travis CI跟Jenkins一样，都是持续集成的工具。但对于个人开发者来说，毕竟Jenkins太重了，要不是为了研究Jenkins，才不会为自己的开源项目搭一个Jenkins，对吧？Travis CI的Free for Open Source的确帮了不少忙。</p>
+<p>在Travis关联好github帐号、Repo和Branch。在项目根目录下加上_<strong>.travis.yml</strong>_文件，当有push时，Travis就会按配置文件进行一系列的操作。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">language: node_js</span><br><span class="line"></span><br><span class="line">node_js: stable</span><br><span class="line"></span><br><span class="line">cache:</span><br><span class="line">    apt: true</span><br><span class="line">    directories:</span><br><span class="line">        \- node_modules</span><br><span class="line">before_install:</span><br><span class="line">  \- npm install -g hexo</span><br><span class="line">  \- npm install -g hexo-cli</span><br><span class="line">install:</span><br><span class="line">  \- npm install</span><br><span class="line">script:</span><br><span class="line">    \- hexo cl</span><br><span class="line">    \- hexo g</span><br><span class="line"></span><br><span class="line">after_script:</span><br><span class="line">  \- cd .&#x2F;public</span><br><span class="line">  \- git init</span><br><span class="line">  \- git config user.name &quot;kenmjlee&quot;</span><br><span class="line">  \- git config user.email &quot;kenneth.mj.lee@gmail.com&quot;</span><br><span class="line">  \- git add .</span><br><span class="line">  \- git commit -m &quot;Travis CI Auto Builder at &#96;date +&quot;%Y-%m-%d %H:%M&quot;&#96;&quot;</span><br><span class="line">  \- git push --force --quiet &quot;https:&#x2F;&#x2F;$&#123;GH_TOKEN&#125;@$&#123;GH_REF&#125;&quot; master:master</span><br><span class="line"></span><br><span class="line">branches:</span><br><span class="line">    only:</span><br><span class="line">        \- source</span><br><span class="line">env:</span><br><span class="line">    global:</span><br><span class="line">        \- GH_REF: github.com&#x2F;kenmjlee&#x2F;kenmjlee.github.io.git</span><br></pre></td></tr></table></figure>
+<p>网上不少朋友说因为GH_Token会明文保存，需要通过加密。其实Travis已经支持在配置页上添加Environment Variables。<img src="/images/travis-ci-setting-environment-variables.png" alt="Setting Page"></p>
+<p>配置好以后，安心写作。剩下的关由Travis去管吧。</p>
+]]></content>
+      <categories>
+        <category>技术风</category>
+      </categories>
+      <tags>
+        <tag>TravisCI</tag>
+        <tag>Hexo</tag>
+        <tag>Github</tag>
+        <tag>自动化</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>用Evernote, Google Calendar记录子弹笔记</title>
+    <url>/2018/01/05/evernote-google-calendar-as-boju/</url>
+    <content><![CDATA[<p>开始了解boju应该是2017年2月的时候，看完<a href="www.playpcesor.com/2016/12/2017-bullet-journal-evernote.html">esor</a>的几篇子弹笔记相关的博文后，也看了<a href="www.bulletjournal.com">官网</a>的视频就模仿着在用。</p>
+<p>子弹笔记主要通过四部份，“Index”、“Future Log”、“Monthly Log”、“Daily Log”组成。Index是将写有重要事件的日记页的页数记录下来，方便索引；Future Log按月份划分，记下有什么希望在某天某月完成的合集；Monthly Log包括日历和任务列表，可以视为整月的行事历；最后的Daily Log就大家规划每天行程工作的地方。</p>
+<h4 id="我的子弹笔记的改进">我的子弹笔记的改进</h4>
+<p>刚开始的时候，处女座的纠结症又犯了。 一直在纠结几个部份好像有重叠，明明在Future Log写了几月几日想做什么、谁人生日，然后到Monthly Log又要再写一篇；在Daily Log发生的事，在Monthly Log写了一遍，然后又要去Index又要再写；还有Google Calendar早就记下大家的生日，难道还要再在笔记里再写一篇？</p>
+<p>所以我的子弹笔记做了一些调整，首先从Daily Log做起，在Evernote创建一个一周的笔记，将一周内Daily Log都写在里面，这样Daily Log就不会分得太散；其次是就放弃Monthly Log，直接用Google Calendar作为Monthly Log使用，这样就减少了重叠。</p>
+<p>再来就是Future Log，Future Log不再是写着某天完成什么，而是写下某个月想完成的目标，例如想在11月参加一个资格考试，12月要看完某本书之类；工作的、家里的、学习的都行。</p>
+<h4 id="Evernote-or-手帐？">Evernote or 手帐？####</h4>
+<p>看着“你管子”上花花绿绿附上各种手绘的漂亮手帐，虽然我也会用方格本，但作为一名不解风情的铁汉，近年又逐渐使用evernote多过笔记本，对于我来说evernote更加合适。当然要是喜欢每年都回味一下垒得高高的笔记本。那就用吧，顺手就好。</p>
+]]></content>
+      <categories>
+        <category>管理风</category>
+      </categories>
+      <tags>
+        <tag>evernote</tag>
+        <tag>GTD</tag>
+        <tag>bullet journal</tag>
+        <tag>google</tag>
+        <tag>google calendar</tag>
+        <tag>time boxing</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>海威特 i31 开箱及试用</title>
+    <url>/2018/08/04/havit-i31-boxing/</url>
+    <content><![CDATA[<p>从上年至今，因为学习的需要至少用坏了1副蓝牙耳机和4副有线耳机。毕竟天天放口袋里拉拉扯扯，于是又再决定买蓝牙的，至于是什么品牌基本没有所谓（一对木耳走天涯）。</p>
+<p>海威特这款就是淘宝直接排第一的（估计给了钱），看了一下外型和对比了同厂的i39。直接就下单第二天收货</p>
+<h3 id="开箱">开箱</h3>
+<p>分不清的正面还是背面</p>
+<p><img src="https://i.loli.net/2018/08/04/5b658c78def58.jpg" alt="分不清的正面还是背面"></p>
+<p>毛不易的代言(其实是后期google了才认识）</p>
+<p><img src="https://i.loli.net/2018/08/04/5b658cbca3fb0.jpg" alt="毛不易的代言(其实是后期google了才认识)"></p>
+<h3 id="试用">试用</h3>
+<h4 id="蓝牙连接">蓝牙连接</h4>
+<p>第一怪，一拖二没有什么问题，android的手机能自动重新连接，而MBP作为第一部连接的设备却每次重连时都要把耳机转为匹配模式才能连接。</p>
+<p>第二怪，蓝牙冲突，当罗技鼠标（M370，M720）连接时，耳机播放的音乐变会得断断续续甚至会断开连接。关掉鼠标后变正常了，但有时会连接耳机后找开鼠标变成鼠标连接不了。</p>
+<p>正常的就是连接距离，不过在现在Bluetooth 4.x下，10米可以是标配了。</p>
+<h4 id="操控">操控</h4>
+<p>多功能键的功能算是不错，除了基本的功能外还有一键切换手机/蓝牙的功能。但三个按键离得太近手太粗就会误按。</p>
+<h4 id="外型">外型</h4>
+<p>耳机戴着不会痛，不过就是会漏风声（很多国产的通病）。这一款的造型虽然耳机线能圈起来，两边的平衡锤大大的还是不太好收纳比较占地方，整天挂颈上也不是很方便，早知道应该买i39。不过跑步的时候也挺牢固，没有试过松下来。</p>
+<h4 id="声色">声色</h4>
+<p>千元以下听个响，我是木耳（第二次说）分不清。</p>
+<p>如果能重选的话，我可能会选择i39，因为便于收纳和便宜一点。如果i31在操控和蓝牙方面改进一下，我也是会继续考虑的。</p>
+]]></content>
+      <categories>
+        <category>数码风</category>
+      </categories>
+      <tags>
+        <tag>蓝牙耳机</tag>
+        <tag>bluetooth headphone</tag>
+        <tag>数码产品</tag>
+        <tag>开箱</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>云端笔记里的“笔记本”与“标签”</title>
+    <url>/2018/01/16/notebooks-and-tags-of-cloud-notes/</url>
+    <content><![CDATA[<p>最近有朋友发圈，说要好好整理一下印象笔记。她有着600篇笔记，28个笔记本。这就让我想起了刚开始用evernote的情景。云端笔记能随意创建笔记本，想必很多初次接触的笔记术的朋友会烦恼怎样管理越来越多的笔记本和笔记的归属。这个笔记应该是放在A笔记本吗？但它又涉及了B的内容呢，到底是放A还是B？要是还涉及点C笔记本的呢？</p>
+<p>直到读了《弘兼宪史教你活用记事本》里的一段<code>一天二十四小時，人生屬於自己--不要將公事和私事分開</code>才恍然大悟。管你什么读书的、学习的、工作的、旅行的，建一个<code>Notes@年份</code>的笔记本通通都放到里面去。这时候标签就能大显身手，evernote支持100,000个标签，数量足够用上一辈子了吧。</p>
+<p>Evernote作为笔者的KPM工具，笔记本的数量（不算上已经归档的）控制在10个以内。主要的会是几个，</p>
+<p><strong>Inbox</strong> — 一切随意的笔记，文摘，或者收集的资料都先存放在这里，待有空整理后再移走。</p>
+<p><strong>Thing To Do</strong> — 这是一个Notebook Stack，如果遇上需要花不少时间收集整理的事情，笔者会单独在这个stack里建一个专项笔记本，直至完成。例如准备去旅行，从出发到回来写上游记。整理好后打上标签再移走。</p>
+<p><strong>Notes@20XX</strong> — 这是一年整年的笔记，所以从<strong>Inbox</strong>和<strong>Thing To Do</strong>的完成的笔记就会移到这里。一年过后再新建一个。</p>
+<p>前文说到的标签，因为一篇笔记能使用多个标签，聪明的你应该明白怎样使用。如果在出差的时候顺便游玩了某个地方，那这属于工作的笔记本还是旅行的笔记本呢？但是用标签行了。</p>
+<p>完成一件事有一千种方法，找到自己合适的工具，合适的流程才是最重要的。网上也有很多“笔记本”与“标签”配合使用的文章，或者你能从中找到更合用的方法。</p>
+]]></content>
+      <categories>
+        <category>管理风</category>
+      </categories>
+      <tags>
+        <tag>evernote</tag>
+        <tag>笔记术</tag>
+        <tag>弘兼宪史</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>回望2017</title>
+    <url>/2018/01/01/see-see-2017/</url>
+    <content><![CDATA[<p>2017最大的收获之一是笔记管理的成型，原本杂乱无章的记录经过一年的调整和优先，慢慢有了自己一套的管理方式。先是坚持每天写晨间笔记，虽然字数廖廖还偷懒过十数天，毕竟是坚持下去了。后来再读了不少关于怎样做笔记的书，又慢慢地将以往乱做读书笔记的习惯纠正过来。</p>
+<p>第二大的收获是阴差阳错地努力复习英语，年初之前还只想着慢慢练习到最后能生肉听得懂网课，后来因一些事把心一横报了个考试，然后硬硬生地英语看下去。虽然成绩出来后是个不差的结果，但也看出了目前的不足。能看5点半的清晨也是拜这次英语考试所赐，可以说经此一番苦斗，冬天的赖床气也治好了。</p>
+<p>2017的这一年，在团队管理上（非项目团队）、项目管理上每一天都有新的挑战。特别是决定重新接手一个不被看重的项目后，除了与项目团队的合作，还学会通过观察团队的日常工作习惯去思考如何改善各种的缺陷。</p>
+<p>如果2017年还有什么遗憾的地方，恐怕是拖延症和注意力不集中没有治好了。希望2018年通过目前的各种系统把“病”治好。</p>
+<p>2018年会继续苦练英语，希望在4月和8月再完成两个考试。为2019准备。</p>
+]]></content>
+      <categories>
+        <category>不基的风</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>跨平台同步VS Code 插件和配置</title>
+    <url>/2020/05/01/sync-vscode-for-multiplatform/</url>
+    <content><![CDATA[<p>没有云备份的应用，一般都是使用网盘之类的服务，但单单只是为了一两个配置就有点麻烦，而且配置文件多数是和应用的其它文件放在一起，那就要先导出配置文件，同步后再导入。作为懒惰的老码农，当然希望是有更便捷的方法。拜访古狗大神之后，找到setting sync 这个插件。使用 gist 作为保存配置的它，的确比其它办法方便。</p>
+<h3 id="两个方法的关联-github">两个方法的关联 github</h3>
+<h4 id="1-先在-github-创建一个-public-或-secret-gist">1. 先在 github 创建一个 public 或 secret gist</h4>
+<p>public gist 可以让你的团队共同分享一个配置，而secret gist 当然就是只有你自己可以访问的配置了。</p>
+<h4 id="2-安装-Setting-Sync-插件">2. 安装 Setting Sync 插件</h4>
+<p><img src="https://i.loli.net/2020/05/01/jL72WJ1cIRFNdyO.png" alt="安装" title="Install Setting Sync"></p>
+<h4 id="3-关联-github">3. 关联 github</h4>
+<p><img src="https://i.loli.net/2020/05/01/vOIakKGN6oY4B2e.png" alt="登录 github" title="Login github"><br>
+这是一种选择，好处是不用去 Developer Setting 页面创建 token，因为 token 一旦创建就要保存下来，以后就不能再看到了。</p>
+<p>当登录后，页面会列出 gist，选择一个作为保存配置的即可。<br>
+再使用</p>
+<blockquote>
+<p>sync: update/upload extensions<br>
+sync: download extensions</p>
+</blockquote>
+<p>就可以在不同的平台上同步了。</p>
+]]></content>
+      <categories>
+        <category>技术风</category>
+      </categories>
+      <tags>
+        <tag>VS Code</tag>
+        <tag>github</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>天猫魔盒亮灯黑屏TTL救砖记</title>
+    <url>/2018/02/06/unbricked-tmb100a-via-ttl/</url>
+    <content><![CDATA[<p>最近在小米电视3装了Kodi 1.7后，想着也在一直掉角落没用过的TMB100A上装装看。可惜天猫魔盒1的ROMs都是基于Android 4.2，只能装Kodi 1.6但python库又对新addons不友善。后来看到有大神在盒上安装Lakka，或者LibreELEC，所以也试着安装一下。</p>
+<p><strong>（利申：笔者非硬件派，对于AML CPU整个系统的启动机制、命令并不熟悉。纯属按网文及自己研究）</strong></p>
+<p>一开始是用wetek的Lakka ROM去安装，估计缺了文件。短接后一直黑屏没亮灯。之后刷的是<a href="https://forum.libreelec.tv/thread/4858-8-0-2-libreelec-8-0-builds-for-mx2-g18/">LibreELEC</a>，按post介绍用ext3，短接没反应；改回了SDMaker重制了一次，变成不断重进REC刷ROM。粗暴断电后再开，就变成亮灯黑屏了。用了原厂firm和CTK-REC，能进。但刷完还是黑屏。遍历Google，这情况应该是NAND有坏区。无奈之下还是在淘宝买了一条PL2303。要留意的是，国产的PL2303在Windows 10下必须是用2009的旧版driver。原因大家懂。</p>
+<p>通过putty连接后终于看到网上各位大神说的界面，输入<code>nand bad</code>和<code>nand scrub_safe</code>应该就可以了。 可怜笔者的盒子还是一样。就在这时，putty的界面再没有输出，重连几次也是一样，正当怀疑人生之际，原来TTL线松了……花了点时间重新接上，再次执行了命令。哈，终于成功了。见到熟悉的病猫钓鱼画面。</p>
+<h6 id="后记">后记</h6>
+<p>其实TTL本来早该买了，此前试过把netgear变砖很多教程都说要TTL来救。后来用nprmflash能远程救砖就没买了。这次也是想着试一下远程IP刷盒，一直在尝试浪费不少时间。</p>
+]]></content>
+      <categories>
+        <category>技术风</category>
+      </categories>
+      <tags>
+        <tag>天猫魔盒</tag>
+        <tag>TMB100A</tag>
+        <tag>TTL</tag>
+        <tag>kodi</tag>
+      </tags>
+  </entry>
+</search>
