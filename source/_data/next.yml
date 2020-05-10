@@ -835,7 +835,7 @@ tencent_mta: # <app_id>
 # Dependencies: https://github.com/theme-next/theme-next-algolia-instant-search
 # For more information: https://www.algolia.com
 algolia_search:
-  enable: true
+  enable: false
   hits:
     per_page: 10
   labels:
