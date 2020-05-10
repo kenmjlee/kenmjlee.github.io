@@ -7,8 +7,7 @@ title: 无定向风
 subtitle: ''
 description: 过气码农现职PM，Geek心不死，Geek性不改。
 author: kenmjlee
-language: en
-timezone: 
+language: zh-Hans
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
@@ -94,17 +93,6 @@ pagination_dir: page
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 theme: next
-theme_config:
-  colorscheme: white
-  nav:
-    Home: /
-    Tags: /tags/
-    Writing: /archives/
-  posts_overview:
-    show_all_posts: false
-    post_count: 10
-  rss: false
-
 
 # Local Search
 search:
