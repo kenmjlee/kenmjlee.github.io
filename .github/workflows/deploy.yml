@@ -5,7 +5,7 @@ on:
     branches:
       - source
   watch:
-    types: started #Deployed by a click
+    types: started
 
 jobs:
   build:
@@ -28,7 +28,6 @@ jobs:
       - name: Pre-build
         env:
           HEXO_DEPLOY_PRI: ${{secrets.HEXO_DEPLOY_PRI}}
-          THEME_BRANCH: v7.6.0
         run: |
           mkdir -p ~/.ssh/
           echo "$HEXO_DEPLOY_PRI" | tr -d '\r' > ~/.ssh/id_rsa
@@ -38,8 +37,6 @@ jobs:
           git config --global user.email 'kenmjlee@users.noreply.github.com'
           npm i -g hexo-cli
           npm i
-        # git clone --branch ${THEME_BRANCH} --depth=10  git@github.com:theme-next/hexo-theme-next.git themes/next
-        # git checkout -b ${THEME_BRANCH}
           git submodule add https://github.com/theme-next/hexo-theme-next themes/next
           cd themes/next
           git checkout master
