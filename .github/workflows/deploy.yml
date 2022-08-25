@@ -8,10 +8,7 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-18.04
-    strategy:
-      matrix:
-        node-version: [12.x]
+    runs-on: ubuntu-latest
     
     steps:
     - name: Checkout
@@ -19,10 +16,17 @@ jobs:
       with:
         submodules: true
     
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
+    - name: Cache node modules
+      uses: actions/cache@v1
+      id: cache
       with:
-        node-version: ${{ matrix.node-version }}
+        path: node_modules
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+    - name: Install Dependencies
+      if: steps.cache.outputs.cache-hit != 'true'
+      run: npm ci
 
     - name: Pre-build
       env:
@@ -37,8 +41,12 @@ jobs:
         git config --global user.email 'kenmjlee@users.noreply.github.com'
         npm i -g hexo-cli
         npm i
-        git clone --branch ${THEME_BRANCH} --depth=10  git@github.com:theme-next/hexo-theme-next.git themes/next
-        git checkout -b ${THEME_BRANCH}
+        # git clone --branch ${THEME_BRANCH} --depth=10  git@github.com:theme-next/hexo-theme-next.git themes/next
+        # git checkout -b ${THEME_BRANCH}
+        git submodule add https://github.com/theme-next/hexo-theme-next themes/next
+        cd themes/next
+        git checkout master
+        cd ../..
         git clone git@github.com:theme-next/theme-next-three --depth=1 themes/next/source/lib/three
         git clone git@github.com:theme-next/theme-next-reading-progress --depth=1 themes/next/source/lib/reading_progress
         git clone git@github.com:theme-next/theme-next-pace --depth=1 themes/next/source/lib/pace      
