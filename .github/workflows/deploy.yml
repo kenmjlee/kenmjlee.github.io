@@ -3,54 +3,51 @@ name: Hexo Deployment CI
 on:
   push:
     branches:
-    - source
+      - source
+  watch:
+    types: started #Deployed by a click
 
 jobs:
   build:
 
     runs-on: ubuntu-latest
-    
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v1
-      with:
-        submodules: true
-    
-    - name: Cache node modules
-      uses: actions/cache@v1
-      id: cache
-      with:
-        path: node_modules
-        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-node-
-    - name: Install Dependencies
-      if: steps.cache.outputs.cache-hit != 'true'
-      run: npm ci
+    # Verify the sender
+    if: github.event.repository.owner.id == github.event.sender.id
 
-    - name: Pre-build
-      env:
-        HEXO_DEPLOY_PRI: ${{secrets.HEXO_DEPLOY_PRI}}
-        THEME_BRANCH: v7.6.0
-      run: |
-        mkdir -p ~/.ssh/
-        echo "$HEXO_DEPLOY_PRI" | tr -d '\r' > ~/.ssh/id_rsa
-        chmod 600 ~/.ssh/id_rsa
-        ssh-keyscan github.com >> ~/.ssh/known_hosts
-        git config --global user.name 'kenmjlee'
-        git config --global user.email 'kenmjlee@users.noreply.github.com'
-        npm i -g hexo-cli
-        npm i
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v2
+        with:
+          ref: master
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: "12"
+
+      - name: Pre-build
+        env:
+          HEXO_DEPLOY_PRI: ${{secrets.HEXO_DEPLOY_PRI}}
+          THEME_BRANCH: v7.6.0
+        run: |
+          mkdir -p ~/.ssh/
+          echo "$HEXO_DEPLOY_PRI" | tr -d '\r' > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+          git config --global user.name 'kenmjlee'
+          git config --global user.email 'kenmjlee@users.noreply.github.com'
+          npm i -g hexo-cli
+          npm i
         # git clone --branch ${THEME_BRANCH} --depth=10  git@github.com:theme-next/hexo-theme-next.git themes/next
         # git checkout -b ${THEME_BRANCH}
-        git submodule add https://github.com/theme-next/hexo-theme-next themes/next
-        cd themes/next
-        git checkout master
-        cd ../..
-        git clone git@github.com:theme-next/theme-next-three --depth=1 themes/next/source/lib/three
-        git clone git@github.com:theme-next/theme-next-reading-progress --depth=1 themes/next/source/lib/reading_progress
-        git clone git@github.com:theme-next/theme-next-pace --depth=1 themes/next/source/lib/pace      
+          git submodule add https://github.com/theme-next/hexo-theme-next themes/next
+          cd themes/next
+          git checkout master
+          cd ../..
+          git clone git@github.com:theme-next/theme-next-three --depth=1 themes/next/source/lib/three
+          git clone git@github.com:theme-next/theme-next-reading-progress --depth=1 themes/next/source/lib/reading_progress
+          git clone git@github.com:theme-next/theme-next-pace --depth=1 themes/next/source/lib/pace      
         # git clone https://github.com/probberechts/hexo-theme-cactus.git themes/cactus
-    - name: Build
-      run: |
-        hexo clean && hexo generate && hexo deploy
+      - name: Build
+        run: |
+          hexo clean && hexo generate && hexo deploy
