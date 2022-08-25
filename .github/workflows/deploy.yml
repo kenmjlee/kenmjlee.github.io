@@ -37,13 +37,13 @@ jobs:
           git config --global user.email 'kenmjlee@users.noreply.github.com'
           npm i -g hexo-cli
           npm i
-          git submodule add https://github.com/theme-next/hexo-theme-next themes/next
+          git submodule add https://github.com/next-theme/hexo-theme-next themes/next
           cd themes/next
           git checkout master
           cd ../..
-          git clone git@github.com:theme-next/theme-next-three --depth=1 themes/next/source/lib/three
-          git clone git@github.com:theme-next/theme-next-reading-progress --depth=1 themes/next/source/lib/reading_progress
-          git clone git@github.com:theme-next/theme-next-pace --depth=1 themes/next/source/lib/pace      
+          git clone git@github.com:next-theme/hexo-next-three --depth=1 themes/next/source/lib/three
+        # git clone git@github.com:next-theme/theme-next-reading-progress --depth=1 themes/next/source/lib/reading_progress
+        # git clone git@github.com:next-theme/theme-next-pace --depth=1 themes/next/source/lib/pace      
         # git clone https://github.com/probberechts/hexo-theme-cactus.git themes/cactus
       - name: Build
         run: |
