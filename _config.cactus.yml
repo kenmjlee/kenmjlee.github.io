@@ -3,10 +3,10 @@ theme_config:
   colorscheme: white
 
 nav:
-  home: /
-  articles: /archives/
-  tags: /tags/
-  search: /search/
+  Home: /
+  Articles: /archives/
+  Tags: /tags/
+  Search: /search/
 
 copyright:
   start_year: 2017
@@ -18,3 +18,10 @@ posts_overview:
   sort_updated: false
 
 social_links: false
+
+logo:
+  enabled: true
+  width: 50
+  height: 50
+  url: /uploads/avatar.jpg
+  gravatar: false
