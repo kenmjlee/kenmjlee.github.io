@@ -9,20 +9,40 @@ on:
 
 jobs:
   build:
+    name: Build on node ${{ matrix.node_version }} and ${{ matrix.os }}
     runs-on: ubuntu-latest
     # Verify the sender
     if: github.event.repository.owner.id == github.event.sender.id
+    strategy:
+      matrix:
+        os: [ubuntu-18.04]
+        node_version: [12.x]
 
     steps:
       - name: Checkout source
         uses: actions/checkout@v2
         with:
-          ref: master
+          ref: source
+          submodules: true
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
+      
+      # Caching dependencies to speed up workflows. (GitHub will remove any cache entries that have not been accessed in over 7 days.)
+      - name: Cache node modules
+        uses: actions/cache@v1
+        id: cache
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install Dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npm ci
 
       - name: Pre-build
         env:
