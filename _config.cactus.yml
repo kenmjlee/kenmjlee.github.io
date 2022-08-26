@@ -1,0 +1,20 @@
+# Config the cactus theme
+theme_config:
+  colorscheme: white
+
+nav:
+  home: /
+  articles: /archives/
+  tags: /tags/
+  search: /search/
+
+copyright:
+  start_year: 2017
+  end_year:
+
+posts_overview:
+  show_all_posts: false
+  post_count: 10
+  sort_updated: false
+
+social_links: false
