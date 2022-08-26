@@ -20,7 +20,7 @@ creative_commons:
   size: big
   sidebar: true
   post: true
-  language: deed.cn
+  language: deed.en
 
 menu:
   home: / || fa fa-home
@@ -79,7 +79,7 @@ post_meta:
     another_day: false
   categories: false
 
-# tag_icon: true
+site_state: false
 
 related_posts:
   enable: true
