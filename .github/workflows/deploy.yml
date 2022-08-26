@@ -9,7 +9,6 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     # Verify the sender
     if: github.event.repository.owner.id == github.event.sender.id
