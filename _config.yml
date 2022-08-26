@@ -117,7 +117,7 @@ sitemap:
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/kenmjlee/kenmjlee.github.io
+  repo: git@github.com:kenmjlee/kenmjlee.github.io.git
   branch: master
   name: kenmjlee
   email: kenmjlee@users.noreply.github.com
