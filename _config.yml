@@ -6,8 +6,8 @@
 title: 无定向风
 subtitle: ''
 description: 过气码农现职PM，Geek心不死，Geek性不改。
-author: kenmjlee
-language: zh-Hans
+author: K. Lee
+language: zh-CN
 timezone: 'America/Toronto'
 
 # URL
@@ -122,8 +122,4 @@ deploy:
   email: kenmjlee@users.noreply.github.com
 
 symbols_count_time:
-  symbols: true
   time: true
-  total_symbols: true
-  total_time: true
-  exclude_codeblock: false
