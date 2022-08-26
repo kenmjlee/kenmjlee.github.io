@@ -99,7 +99,8 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: next
+# theme: 
+theme: cactus
 
 # Local Search
 search:
@@ -120,10 +121,10 @@ deploy:
   repo: git@github.com:kenmjlee/kenmjlee.github.io.git
   branch: master
 
-symbols_count_time:
-  time: true
-  exclude_codeblock: true
-  total_symbols: false
-  total_time: false
+# symbols_count_time:
+#   time: true
+#   exclude_codeblock: true
+#   total_symbols: false
+#   total_time: false
 
 
