@@ -112,7 +112,15 @@ search:
 sitemap:
     path: sitemap.xml
     template: ./source/sitemap_template.xml
-    
+
+# Deployment
+## Docs: https://hexo.io/docs/deployment.html
+deploy:
+  type: git
+  repo: git@github.com:kenmjlee/kenmjlee.github.io.git
+  branch: master
+  token: ${{ secrets.HEXO_DEPLOY_PRI }}
+
 symbols_count_time:
   time: true
   exclude_codeblock: true
