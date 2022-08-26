@@ -148,9 +148,4 @@ posts_overview:
   post_count: 10
   sort_updated: false
 
-social_links:
-  github: /
-  twitter: /
-  facebook: /
-  linkedin: /
-  mail: ""
+social_links: false
