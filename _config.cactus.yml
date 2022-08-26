@@ -25,3 +25,14 @@ logo:
   height: 50
   url: /uploads/avatar.jpg
   gravatar: false
+
+
+reading_progress:
+  enable: true
+  # Available values: left | right
+  start_at: left
+  # Available values: top | bottom
+  position: top
+  reversed: true
+  color: "#37c6c0"
+  height: 2px
