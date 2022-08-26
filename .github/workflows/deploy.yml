@@ -49,19 +49,26 @@ jobs:
           HEXO_DEPLOY_PRI: ${{secrets.HEXO_DEPLOY_PRI}}
         run: |
           mkdir -p ~/.ssh/
-          echo "$HEXO_DEPLOY_PRI" | tr -d '\r' > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan github.com >> ~/.ssh/known_hosts
-          git config --global user.name 'kenmjlee'
-          git config --global user.email 'kenmjlee@users.noreply.github.com'
-          npm i -g hexo-cli
-          npm i
+        #  echo "$HEXO_DEPLOY_PRI" | tr -d '\r' > ~/.ssh/id_rsa
+        #  chmod 600 ~/.ssh/id_rsa
+        #  ssh-keyscan github.com >> ~/.ssh/known_hosts
+        #  git config --global user.name 'kenmjlee'
+        #  git config --global user.email 'kenmjlee@users.noreply.github.com'
+        #  npm i -g hexo-cli
+        #  npm i
         #  git clone https://github.com:theme-next/hexo-theme-next --depth=1 themes/next
         # git clone git@github.com:theme-next/theme-next-three --depth=1 themes/next/source/lib/three
         # git clone git@github.com:theme-next/theme-next-reading-progress --depth=1 themes/next/source/lib/reading_progress
         # git clone git@github.com:theme-next/theme-next-pace --depth=1 themes/next/source/lib/pace      
         # git clone https://github.com/probberechts/hexo-theme-cactus.git themes/cactus
         
-      - name: Build
-        run: |
-          hexo clean && hexo generate && hexo deploy
+      #- name: Build
+      #  run: |
+      #    hexo clean && hexo generate && hexo deploy
+
+      - name: Get version
+        id: vars
+        run: echo ::set-output name=version::$(cat $HEXO_DEPLOY_PRI)
+      - name: Test output
+        run: echo ${{ steps.vars.outputs.version }}
+
