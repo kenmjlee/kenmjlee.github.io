@@ -13,6 +13,7 @@ db.*
 .DS_Store
 */.DS_Store
 .vault-stats
+.deploy_git
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
