@@ -66,6 +66,7 @@ index_generator:
   path: ''
   per_page: 10
   order_by: -date
+  pagination_dir: page
 
 # Category & Tag
 default_category: uncategorized
@@ -142,5 +143,3 @@ copyright:
   start_year: 2017
   end_year:
    
-per_page: 10
-pagination_dir: page
