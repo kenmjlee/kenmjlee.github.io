@@ -119,7 +119,6 @@ deploy:
   type: git
   repo: git@github.com:kenmjlee/kenmjlee.github.io.git
   branch: master
-  token: ${{ secrets.HEXO_DEPLOY_PRI }}
 
 symbols_count_time:
   time: true
