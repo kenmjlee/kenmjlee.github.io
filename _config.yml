@@ -130,7 +130,7 @@ deploy:
 
 # Config the cactus theme
 theme_config:
-  colorscheme: classic
+  colorscheme: white
 
 nav:
   home: /
@@ -141,3 +141,6 @@ nav:
 copyright:
   start_year: 2017
   end_year:
+   
+per_page: 10
+pagination_dir: page
