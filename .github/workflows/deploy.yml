@@ -46,10 +46,10 @@ jobs:
 
       - name: Pre-build
         env:
-          HEXO_DEPLOY_PRI: ${{secrets.DEPLOY_KEY}}
+          HEXO_DEPLOY_PRI: ${{secrets.HEXO_DEPLOY_PRI}}
         run: |
           mkdir -p ~/.ssh/
-          echo "$HEXO_DEPLOY_PRI" 
+          echo "${{HEXO_DEPLOY_PRI}}" 
         # | tr -d '\r' > ~/.ssh/id_rsa
         #  chmod 600 ~/.ssh/id_rsa
         #  ssh-keyscan github.com >> ~/.ssh/known_hosts
