@@ -25,9 +25,9 @@ creative_commons:
 menu:
   home: / || fa fa-home
   #about: /about/ || fa fa-user
-  categories: /categories/ || fa fa-th
-  archives: /archives/ || fa fa-archive
-  tags: /tags/ || fa fa-tags
+  #categories: /categories/ || fa fa-th
+  Articles: /archives/ || fa fa-archive
+  Tags: /tags/ || fa fa-tags
   #schedule: /schedule/ || fa fa-calendar
   #sitemap: /sitemap.xml || fa fa-sitemap
   #commonweal: /404/ || fa fa-heartbeat
@@ -96,34 +96,9 @@ post_meta:
   updated_at:
     enable: false
     another_day: false
+  categories: false
 
 # tag_icon: true
 
 related_posts:
   enable: true
-
-filter_optimize:
-  enable: true
-  # remove the surrounding comments in each of the bundled files
-  remove_comments: false
-  css:
-    # minify all css files
-    minify: true
-    # bundle loaded css files into one
-    bundle: true
-    # use a script block to load css elements dynamically
-    delivery: true
-    # make specific css content inline into the html page
-    #   - only support the full path
-    #   - default is ['css/main.css']
-    inlines:
-    excludes:
-  js:
-    # minify all js files
-    minify: true
-    # bundle loaded js files into one
-    bundle: true
-    excludes:
-  # set the priority of this plugin,
-  # lower means it will be executed first, default of Hexo is 10
-  priority: 12
