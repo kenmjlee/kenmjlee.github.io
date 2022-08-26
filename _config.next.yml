@@ -51,28 +51,9 @@ reading_progress:
   start_at: left
   # Available values: top | bottom
   position: top
-  reversed: true
+  reversed: false
   color: "#37c6c0"
   height: 2px
-
-font:
-  # Use custom fonts families or not.
-  # Depended options: `external` and `family`.
-  enable: true
-
-  # Uri of fonts host, e.g. https://fonts.googleapis.com (Default).
-  host:
-
-  # Font options:
-  # `external: true` will load this font family from `host` above.
-  # `family: Times New Roman`. Without any quotes.
-  # `size: x.x`. Use `em` as unit. Default: 1 (16px)
-
-  # Global font settings used for all elements inside <body>.
-  global:
-    external: true
-    family: Serif
-
 
 symbols_count_time:
   separated_meta: false
