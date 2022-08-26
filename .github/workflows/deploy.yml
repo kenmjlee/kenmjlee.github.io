@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - source
-  watch:
+  workflow_dispatch:
     types: started
 
 jobs:
@@ -46,10 +46,11 @@ jobs:
 
       - name: Pre-build
         env:
-          HEXO_DEPLOY_PRI: ${{secrets.HEXO_DEPLOY_PRI}}
+          HEXO_DEPLOY_PRI: ${{secrets.DEPLOY_KEY}}
         run: |
           mkdir -p ~/.ssh/
-        #  echo "$HEXO_DEPLOY_PRI" | tr -d '\r' > ~/.ssh/id_rsa
+          echo "$HEXO_DEPLOY_PRI"
+        # | tr -d '\r' > ~/.ssh/id_rsa
         #  chmod 600 ~/.ssh/id_rsa
         #  ssh-keyscan github.com >> ~/.ssh/known_hosts
         #  git config --global user.name 'kenmjlee'
@@ -65,10 +66,4 @@ jobs:
       #- name: Build
       #  run: |
       #    hexo clean && hexo generate && hexo deploy
-
-      - name: Get version
-        id: vars
-        run: echo ::set-output name=version::$(cat $HEXO_DEPLOY_PRI)
-      - name: Test output
-        run: echo ${{ steps.vars.outputs.version }}
 
