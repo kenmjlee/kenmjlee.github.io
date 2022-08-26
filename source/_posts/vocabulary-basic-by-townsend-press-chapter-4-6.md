@@ -27,7 +27,7 @@ description: This is the study note of Vocabulary Basic by Townsend Press.
 2. **get over**: overcome a difficulty
 
 ---
-Chapter 5
+# Chapter 5
 1. benefit <sub>v.</sub> = be helped
 2. delay <sub>v.</sub> = wait until later
 3. emphasize <sub>v.</sub> = show to be important
