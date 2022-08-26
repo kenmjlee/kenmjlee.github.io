@@ -91,3 +91,13 @@ local_search:
   unescape: false
   # Preload the search data when the page loads.
   preload: false
+
+post_meta:
+  updated_at:
+    enable: false
+    another_day: false
+
+# tag_icon: true
+
+related_posts:
+  enable: true
