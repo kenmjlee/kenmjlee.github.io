@@ -142,6 +142,15 @@ nav:
 copyright:
   start_year: 2017
   end_year:
-   
-per_pages: 10
-paginate_dir: page
+
+posts_overview:
+  show_all_posts: false
+  post_count: 10
+  sort_updated: false
+
+social_links:
+  github: /
+  twitter: /
+  facebook: /
+  linkedin: /
+  mail: ""
