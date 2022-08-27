@@ -56,6 +56,6 @@ env:
 
 
 
-网上不少朋友说因为GH_Token会明文保存，需要通过加密。其实Travis已经支持在配置页上添加Environment Variables。![Setting Page](/images/travis-ci-setting-environment-variables.png)
+网上不少朋友说因为GH_Token会明文保存，需要通过加密。其实Travis已经支持在配置页上添加Environment Variables。![Setting Page](/uploads/travis-ci-setting-environment-variables.png)
 
 配置好以后，安心写作。剩下的关由Travis去管吧。
