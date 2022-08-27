@@ -122,7 +122,7 @@ giscus:
    # Available values: 0 | 1 
   emit_metadata: 0
   # Available values: light | dark | dark_high_contrast | transparent_dark | preferred-color-scheme
-  theme: light_protanopia
+  theme: preferred_color_scheme
   # Available values: en | zh-C
   lang: en
   # Available value: anonymous
