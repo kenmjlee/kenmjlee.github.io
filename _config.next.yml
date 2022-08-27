@@ -95,6 +95,7 @@ favicon:
 sidebar:
   width: 280
   offset: 12
+  display: hide
 
 text_align:
   # Available values: start | end | left | right | center | justify | justify-all | match-parent
