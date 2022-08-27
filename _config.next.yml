@@ -45,6 +45,25 @@ footer:
   icon:
     animated: false
 
+# Multiple Comment System Support
+comments:
+  # Available values: tabs | buttons
+  style: tabs
+  # Choose a comment system to be displayed by default
+  # Available values: disqus | disqusjs | changyan | livere | gitalk | utterances | isso
+  active: utterances
+  # Setting `true` means remembering the comment system selected by the visitor
+  storage: true
+  # Lazyload all comment systems.
+  lazyload: true
+  # Modify icons and texts for any style, here are some examples
+  nav:
+    #disqus:
+    #  text: Load Disqus
+    #  order: -1
+    #gitalk:
+    #  order: -2
+
 reading_progress:
   enable: true
   # Available values: left | right
@@ -109,26 +128,10 @@ google_analytics:
   tracking_id: UA-53592781-1
   only_pageview: false
 
-giscus:
-  enable: false
-  repo: kenmjlee/comment_repo
-  repo_id: R_kgDOH4749Q
-  category: General
-  category_id: DIC_kwDOH4749c4CRE0A
+utterances:
+  enable: true
+  repo: kenmjlee/comment_repo # Github repository owner and name
   # Available values: pathname | url | title | og:title
-  mapping: title
-  # Available values: 0 | 1 
-  reactions_enabled: 1
-   # Available values: 0 | 1 
-  emit_metadata: 0
-  # Available values: light | dark | dark_high_contrast | transparent_dark | preferred-color-scheme
-  theme: preferred_color_scheme
-  # Available values: en | zh-C
-  lang: en
-  # Available value: anonymous
-  crossorigin: anonymous
-  # Place the comment box above the comments
-  input_position: bottom
-  # Load the comments lazily
-  loading: lazy
-
+  issue_term: pathname
+  # Available values: github-light | github-dark | preferred-color-scheme | github-dark-orange | icy-dark | dark-blue | photon-dark | boxy-light
+  theme: preferred-color-scheme
