@@ -19,7 +19,7 @@ creative_commons:
   # Available values: big | small
   size: big
   sidebar: true
-  post: true
+  post: false
   language: deed.en
 
 menu:
