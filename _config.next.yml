@@ -94,7 +94,6 @@ favicon:
 
 sidebar:
   width: 280
-  offset: 12
   display: hide
 
 text_align:
