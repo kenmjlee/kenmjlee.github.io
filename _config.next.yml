@@ -43,7 +43,7 @@ avatar:
 footer:
   since: 2017
   icon:
-    animated: true
+    animated: false
 
 reading_progress:
   enable: true
