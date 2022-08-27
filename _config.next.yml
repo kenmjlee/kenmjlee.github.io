@@ -112,7 +112,7 @@ google_analytics:
 giscus:
   enable: true
   repo: comment_repo
-  repo_id: 43132baf31a2e3bb00c0d282fb94bb8688c92588
+  repo_id: 529463541
   category: General
   category_id: 3803059
   # Available values: pathname | url | title | og:title
