@@ -109,12 +109,25 @@ google_analytics:
   tracking_id: UA-53592781-1
   only_pageview: false
 
-# Utterances
-# For more information: https://utteranc.es
-utterances:
+giscus:
   enable: true
-  repo: kenmjlee/utterance_repo # Github repository owner and name
+  repo: comment_repo
+  repo_id: 43132baf31a2e3bb00c0d282fb94bb8688c92588
+  category: General
+  category_id: 3803059
   # Available values: pathname | url | title | og:title
-  issue_term: preferred-color-scheme
-  # Available values: github-light | github-dark | preferred-color-scheme | github-dark-orange | icy-dark | dark-blue | photon-dark | boxy-light
-  theme: github-light
+  mapping: title
+  # Available values: 0 | 1 
+  reactions_enabled: 1
+   # Available values: 0 | 1 
+  emit_metadata: 0
+  # Available values: light | dark | dark_high_contrast | transparent_dark | preferred-color-scheme
+  theme: light_protanopia
+  # Available values: en | zh-C
+  lang: en
+  # Available value: anonymous
+  crossorigin: anonymous
+  # Place the comment box above the comments
+  input_position: bottom
+  # Load the comments lazily
+  loading: lazy
