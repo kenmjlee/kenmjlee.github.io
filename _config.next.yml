@@ -110,7 +110,7 @@ google_analytics:
   only_pageview: false
 
 giscus:
-  enable: true
+  enable: false
   repo: kenmjlee/comment_repo
   repo_id: R_kgDOH4749Q
   category: General
