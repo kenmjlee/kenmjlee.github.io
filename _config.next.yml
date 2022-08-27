@@ -112,9 +112,9 @@ google_analytics:
 giscus:
   enable: true
   repo: kenmjlee/comment_repo
-  repo_id: 529463541
+  repo_id: R_kgDOH4749Q
   category: General
-  category_id: 3803059
+  category_id: DIC_kwDOH4749c4CRE0A
   # Available values: pathname | url | title | og:title
   mapping: title
   # Available values: 0 | 1 
@@ -131,3 +131,4 @@ giscus:
   input_position: bottom
   # Load the comments lazily
   loading: lazy
+
