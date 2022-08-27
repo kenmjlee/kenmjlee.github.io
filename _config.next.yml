@@ -114,9 +114,9 @@ favicon:
   safari_pinned_tab: /images/logo.svg
   android_manifest: /images/site.webmanifest
 
-sidebar:
-  width: 280
-  display: hide
+# sidebar:
+#   width: 280
+#   display: hide
 
 text_align:
   # Available values: start | end | left | right | center | justify | justify-all | match-parent
