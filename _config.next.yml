@@ -117,4 +117,4 @@ utterances:
   # Available values: pathname | url | title | og:title
   issue_term: preferred-color-scheme
   # Available values: github-light | github-dark | preferred-color-scheme | github-dark-orange | icy-dark | dark-blue | photon-dark | boxy-light
-  theme: boxy-light
+  theme: github-light
