@@ -129,3 +129,8 @@ symbols_count_time:
   exclude_codeblock: true
   total_symbols: false
   total_time: false
+
+# Google Analytics
+google_analytics:
+  id: UA-53592781-1
+  enabled: true
