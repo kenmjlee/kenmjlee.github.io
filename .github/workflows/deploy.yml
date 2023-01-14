@@ -15,8 +15,8 @@ jobs:
     if: github.event.repository.owner.id == github.event.sender.id
     strategy:
       matrix:
-        os: [ubuntu-18.04]
-        node_version: [12.x]
+        os: [ubuntu-22.04]
+        node_version: [16.x]
 
     steps:
       - name: Checkout source
