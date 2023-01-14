@@ -2,7 +2,7 @@
 title: 从 VS Code 配置 Github SSH 及踩过的坑
 date: 2020-04-02 22:39:00
 categories:
-   - 技术风
+   - Tech
 tags:
    - VS Code
    - github

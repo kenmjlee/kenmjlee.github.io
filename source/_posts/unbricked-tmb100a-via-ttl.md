@@ -2,16 +2,16 @@
 title: 天猫魔盒亮灯黑屏TTL救砖记
 date: 2018-02-06 17:04:00
 categories:
-      - 技术风
+      - Tech
 tags:
-     - 天猫魔盒
+     - tmall box
      - TMB100A
      - TTL
      - kodi
 description: 小米电视3装了Kodi 1.7后，想着也在一直掉角落没用过的TMB100A上装装看。
 ---
 
-最近在小米电视3装了Kodi 1.7后，想着也在一直掉角落没用过的TMB100A上装装看。可惜天猫魔盒1的ROMs都是基于Android 4.2，只能装Kodi 1.6但python库又对新addons不友善。后来看到有大神在盒上安装Lakka，或者LibreELEC，所以也试着安装一下。
+最近在小米电视3装了 Kodi 1.7后，想着也在一直掉角落没用过的TMB100A上装装看。可惜天猫魔盒1的ROMs都是基于Android 4.2，只能装 Kodi 1.6 但python库又对新addons不友善。后来看到有大神在盒上安装 Lakka，或者 LibreELEC，所以也试着安装一下。
 
 
 

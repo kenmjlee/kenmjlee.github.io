@@ -56,7 +56,7 @@ jobs:
           git config --global user.email 'kenmjlee@users.noreply.github.com'
           npm i -g hexo-cli
           npm i
-        # git clone git@github.com:probberechts/hexo-theme-cactus.git --depth=10 themes/cactus
+          git clone git@github.com:probberechts/hexo-theme-cactus.git --depth=10 themes/cactus
         # git clone https://github.com:theme-next/hexo-theme-next --depth=1 themes/next
         # git clone git@github.com:theme-next/theme-next-three --depth=1 themes/next/source/lib/three
         # git clone git@github.com:theme-next/theme-next-reading-progress --depth=1 themes/next/source/lib/reading_progress

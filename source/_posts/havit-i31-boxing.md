@@ -2,12 +2,12 @@
 title: 海威特 i31 开箱及试用
 date: 2018-08-04 19:14:00
 categories:
-   - 数码风
+   - Digital
 tags:
-   - 蓝牙耳机
+   - TWS
    - bluetooth headphone
-   - 数码产品
-   - 开箱
+   - digital product
+   - unbox
 description: 从上年至今，因为学习的需要至少用坏了1副蓝牙耳机和4副有线耳机。毕竟天天放口袋里拉拉扯扯，于是又再决定买蓝牙的，至于是什么品牌基本没有所谓。
 ---
 

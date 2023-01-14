@@ -2,11 +2,11 @@
 title: Netgear R6250的固件果然还是DD-WRT最相配
 date: 2018-01-20 21:43:00
 categories:
-   - 技术风
+   - Tech
 tags:
    - netgear
-   - 路由器
-   - 固件
+   - router
+   - firmware
    - dd-wrt
    - tomato
 description: 从DD-WRT安装到Tomato其实很简单，但笔者的经历可以用坎坷来形容。但作为一名中期懒癌伸手党，有些问题就懒得注册了去报，自己先记着。待有缘人看到再说吧。

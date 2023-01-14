@@ -3,7 +3,7 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Baffling Wind
+title: The Light Ahead
 subtitle: ''
 description: 'All articles written here are from a guy who used to be a software engineer. Posts will be related to life, technology, digital, English learning, reading, or other staff, and be, from times to times, in either English or Chinese.'
 author: K. Lee
@@ -14,7 +14,7 @@ timezone: 'America/Toronto'
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: https://kenmjlee.github.io
 root: /
-permalink: :year/:month/:day/:title/
+permalink: :year-:month-:day-:title/
 permalink_defaults:
 pretty_urls:
   trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
@@ -100,10 +100,10 @@ updated_option: 'mtime'
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: next
-#theme: cactus
-#theme_config:
-#  colorscheme: white
+#theme: next
+theme: cactus
+theme_config:
+  colorscheme: white
 
 # Local Search
 search:
