@@ -58,8 +58,8 @@ jobs:
           npm i
           cd themes/cactus
           git submodule init
-          touch robots.txt
           git submodule update
+          touch source/robots.txt
         #  git clone git@github.com:probberechts/hexo-theme-cactus.git --depth=10 themes/cactus
         # touch themes/cactus/source/robots.txt
         # git clone https://github.com:theme-next/hexo-theme-next --depth=1 themes/next
