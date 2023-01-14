@@ -56,9 +56,10 @@ jobs:
           git config --global user.email 'kenmjlee@users.noreply.github.com'
           npm i -g hexo-cli
           npm i
+          git submodule add https://github.com/probberechts/hexo-theme-cactus themes/cactus
           cd themes/cactus
           git submodule init
-          git submodule update
+          git submodule update --remote
         #  git clone git@github.com:probberechts/hexo-theme-cactus.git --depth=10 themes/cactus
         # touch themes/cactus/source/robots.txt
         # git clone https://github.com:theme-next/hexo-theme-next --depth=1 themes/next
