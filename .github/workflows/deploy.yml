@@ -60,7 +60,6 @@ jobs:
           cd themes/cactus
           git submodule init
           git submodule update --remote
-          mkdir source
           touch source/robots.txt
         #  git clone git@github.com:probberechts/hexo-theme-cactus.git --depth=10 themes/cactus
         # touch themes/cactus/source/robots.txt
