@@ -1,3 +1,3 @@
-[submodule "theme/cectus"] 
-  path = theme/cectus 
+[submodule "themes/cectus"] 
+  path = themes/cectus 
   url = git://github.com/probberechts/hexo-theme-cactus.git
