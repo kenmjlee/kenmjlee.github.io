@@ -36,3 +36,8 @@ reading_progress:
   reversed: true
   color: "#37c6c0"
   height: 2px
+
+  # Google Analytics
+google_analytics:
+  id: UA-53592781-1
+  enabled: true
