@@ -20,7 +20,7 @@ description: 终于我又重操旧业，写起了代码。因为Visual Studio Co
 
 
 
-### 生成 SSH Key
+## 生成 SSH Key
 
 一、 在 macOS 下的 terminal 里使用 ssh-keygen 生在公钥和私钥文件，  
 
@@ -65,7 +65,7 @@ Enter same passphrase again:
 
 
 
-### 挖坑复挖坑，坑坑何其多
+## 挖坑复挖坑，坑坑何其多
 
 按常理，添加 ssh key 之后，使用 ssh-agent 就可以把私钥和公钥文件拿走，但添加 ssh-agent 时出现了以下内容：
 
@@ -83,7 +83,7 @@ What the hell!
 
 
 
-#### 用 Visual Studio Code 拉取代码
+### 用 Visual Studio Code 拉取代码
 
 现在，我们的 github 已经可以通过 ssh 进行各种操作，自以为在 VS Code 内也可以顺利之际，
 
