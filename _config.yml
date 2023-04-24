@@ -3,11 +3,11 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: The Light Ahead
+title: 明灯指路 The Light Ahead
 subtitle: ''
-description: 'All articles written here are from a guy who used to be a software engineer. Posts will be related to life, technology, digital, English learning, reading, or other staff, and be, from times to times, in either English or Chinese.'
+description: '技术、学习、生活、流浪、有的没有。'
 author: K. Lee
-language: en
+language: zh-cn
 timezone: 'America/Toronto'
 
 # URL
