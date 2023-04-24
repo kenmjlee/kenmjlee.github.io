@@ -3,10 +3,10 @@ theme_config:
   colorscheme: white
 
 nav:
-  Home: /
-  Articles: /archives/
-  Tags: /tags/
-  Search: /search/
+  首页: /
+  归档: /archives/
+  标签: /tags/
+  搜索: /search/
 
 copyright:
   start_year: 2017
