@@ -2,7 +2,7 @@
 title: 云端笔记里的“笔记本”与“标签”
 date: 2018-01-16 20:00:00
 categories:
-   - Life
+   - 生产力
 tags:
    - evernote
    - noting

@@ -2,7 +2,7 @@
 title: 用Evernote, Google Calendar记录子弹笔记
 date: 2018-01-05 14:06:00
 categories:
-   - Life
+   - 生产力
 tags:
    - evernote
    - GTD

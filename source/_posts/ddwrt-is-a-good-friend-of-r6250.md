@@ -2,7 +2,7 @@
 title: Netgear R6250的固件果然还是DD-WRT最相配
 date: 2018-01-20 21:43:00
 categories:
-   - Tech
+   - 科技与技术
 tags:
    - netgear
    - router

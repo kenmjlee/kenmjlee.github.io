@@ -7,7 +7,7 @@ tags:
    - Github
    - Automation
 categories: 
-   - Tech
+   - 科技与技术
 description: 不久之前还在使用Jekylly部署github page，每次都要在本地编译后再push到repo上。于是写了几篇博客又搁置了。后来在研究Travis CI时，Google出很多人都在用它来部署github page，于是再次入坑。
 ---
 

@@ -2,7 +2,7 @@
 title: 跨平台同步VS Code 插件和配置
 date: 2020-05-01 11:00:00
 categories:
-   - Tech
+   - 科技与技术
 tags:
    - VS Code
    - github

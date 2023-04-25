@@ -2,7 +2,7 @@
 title: 天猫魔盒亮灯黑屏TTL救砖记
 date: 2018-02-06 17:04:00
 categories:
-      - Tech
+      - 科技与技术
 tags:
      - tmall box
      - TMB100A
