@@ -3,10 +3,10 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 数波波看星星
+title: 风无定向
 subtitle: ''
 description: '技术、学习、生活、有的没有。'
-author: K. Lee
+author: 林伯
 language: zh-cn
 timezone: 'America/Toronto'
 
@@ -132,5 +132,5 @@ symbols_count_time:
 
 # Google Analytics
 google_analytics:
-  id: UA-53592781-1
+  id: G-V622HCS45J
   enabled: true
