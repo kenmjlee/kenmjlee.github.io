@@ -1,3 +1,15 @@
+---
+title: 在安省考取驾照
+date: 2022-02-18 12:26:36
+categories:
+   - 生活
+tags:
+   - Canada
+   - Ontario
+   - Life
+   - driving
+---
+
 ## 驾照的分类
 
 在安省，普通驾照分为三个等级：G1、G2 和 G。
