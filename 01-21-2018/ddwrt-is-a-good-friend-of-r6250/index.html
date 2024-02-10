@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="从DD-WRT安装到Tomato其实很简单，但笔者的经历可以用坎坷来形容。但作为一名中期懒癌伸手党，有些问题就懒得注册了去报，自己先记着。待有缘人看到再说吧。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Netgear R6250的固件果然还是DD-WRT最相配">
+<meta property="og:url" content="https://kenmjlee.github.io/01-21-2018/ddwrt-is-a-good-friend-of-r6250/index.html">
+<meta property="og:site_name" content="林伯坚尼の林伯">
+<meta property="og:description" content="从DD-WRT安装到Tomato其实很简单，但笔者的经历可以用坎坷来形容。但作为一名中期懒癌伸手党，有些问题就懒得注册了去报，自己先记着。待有缘人看到再说吧。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-01-21T02:43:00.000Z">
+<meta property="article:modified_time" content="2024-02-10T15:46:15.935Z">
+<meta property="article:author" content="林伯">
+<meta property="article:tag" content="netgear">
+<meta property="article:tag" content="router">
+<meta property="article:tag" content="firmware">
+<meta property="article:tag" content="dd-wrt">
+<meta property="article:tag" content="tomato">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Netgear R6250的固件果然还是DD-WRT最相配</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/tags/">标签</a></li><!--
+     --><!--
+       --><li><a href="/search/">搜索</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post" href="/02-06-2018/unbricked-tmb100a-via-ttl/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/01-17-2018/notebooks-and-tags-of-cloud-notes/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://kenmjlee.github.io/01-21-2018/ddwrt-is-a-good-friend-of-r6250/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://kenmjlee.github.io/01-21-2018/ddwrt-is-a-good-friend-of-r6250/&text=Netgear R6250的固件果然还是DD-WRT最相配"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://kenmjlee.github.io/01-21-2018/ddwrt-is-a-good-friend-of-r6250/&title=Netgear R6250的固件果然还是DD-WRT最相配"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://kenmjlee.github.io/01-21-2018/ddwrt-is-a-good-friend-of-r6250/&is_video=false&description=Netgear R6250的固件果然还是DD-WRT最相配"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Netgear R6250的固件果然还是DD-WRT最相配&body=Check out this article: https://kenmjlee.github.io/01-21-2018/ddwrt-is-a-good-friend-of-r6250/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://kenmjlee.github.io/01-21-2018/ddwrt-is-a-good-friend-of-r6250/&title=Netgear R6250的固件果然还是DD-WRT最相配"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://kenmjlee.github.io/01-21-2018/ddwrt-is-a-good-friend-of-r6250/&title=Netgear R6250的固件果然还是DD-WRT最相配"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://kenmjlee.github.io/01-21-2018/ddwrt-is-a-good-friend-of-r6250/&title=Netgear R6250的固件果然还是DD-WRT最相配"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://kenmjlee.github.io/01-21-2018/ddwrt-is-a-good-friend-of-r6250/&title=Netgear R6250的固件果然还是DD-WRT最相配"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://kenmjlee.github.io/01-21-2018/ddwrt-is-a-good-friend-of-r6250/&name=Netgear R6250的固件果然还是DD-WRT最相配&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://kenmjlee.github.io/01-21-2018/ddwrt-is-a-good-friend-of-r6250/&t=Netgear R6250的固件果然还是DD-WRT最相配"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        Netgear R6250的固件果然还是DD-WRT最相配
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">林伯</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2018-01-21T02:43:00.000Z" class="dt-published" itemprop="datePublished">2018-01-20</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fa-solid fa-archive"></i>
+        <a class="category-link" href="/categories/%E7%A7%91%E6%8A%80%E4%B8%8E%E6%8A%80%E6%9C%AF/">科技与技术</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/dd-wrt/" rel="tag">dd-wrt</a>, <a class="p-category" href="/tags/firmware/" rel="tag">firmware</a>, <a class="p-category" href="/tags/netgear/" rel="tag">netgear</a>, <a class="p-category" href="/tags/router/" rel="tag">router</a>, <a class="p-category" href="/tags/tomato/" rel="tag">tomato</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <p>koolshare团队的确是大牛，在advanced tomato的基础上加入了梅林的软件中心，令操作某些插件的确很方便。就这样入坑了。目前koolshare团队编译的<a href="http://koolshare.cn/thread-98787-1-1.html">固件</a>基于3.4-138，是挺不错的版本。</p>
+<p>从DD-WRT安装到Tomato其实很简单，但笔者的经历可以用坎坷来形容。但作为一名中期懒癌伸手党，有些问题就懒得注册了去报，自己先记着。待有缘人看到再说吧，</p>
+<ol>
+<li><p>下载固件 — 这小机率的事情也让给遇上了；下好了包准备开刷，等等，为什么包名是EA6700的？再下一次，下对了。R6250的！难道楼主发现放错了重新上传？于是仔细观察下，原来自xiaomi-R1DX以下的链接，型号和版本号中间的破折号“-”，它们的链接都是EA6700的链接，两边倒是对的……这也能碰上，注定接下来的周末就这样被废掉。</p>
+</li>
+<li><p>刷机 — 问过谷歌大神，DD-WRT可以直刷，清nvram，刷后30-30-30就能用了。对吧，很简单吧？ 可是操作完变砖了。考虑到是不是DD-WRT的版本太旧，于是用nmrpflash救砖升到最新版，再来一遍……又砖了，无限重启。实在没办法了，想想可能还是从原厂刷入比较妥，于是重来一遍。从原厂到过渡固件一切正常，最后一步……双砖了。如是者从晚上8点到凌晨1点，来来回回把固件、nvram、硬重置弄了不下数十遍，仍然不成功。</p>
+<p>翌日，再试了好几遍还是不成功，可能睡好一觉思维清晰了不少。看看怎样逐一排查问题，第一件就是把外挂硬盘拔了。这一拔果真不得了，竟然启动成功提示输入帐号密码。不过，帐号竟然不是admin&#x2F;admin，试了一千种可能包括网上说的。依然不行，又只能重刷了。一次成功，应该是ext[234]的驱动有问题，把硬盘换到NTFS就好了。</p>
+</li>
+<li><p>DLNA — 能硬盘，当然是把BT和DLNA开上，变成视频中心。因为tomato里nvram保存的ms_dirs是”&#x2F;mnt&lt;”，所以这是无法在网页上修改它的路径，还一时手欠把这默认目录给删了后再也不能重新添加，唯一的办法就是重置。然后再也不敢乱改了。</p>
+</li>
+<li><p>aria2 &amp; aria2ui — 软件中心的aria2能设置的选项太少了，装了aria2ui后发现改过的设置每次重启或者过了一会儿就会变成默认值，不过对tomato没有太多的了解也不知道在哪里修改配置文件。也就放弃了，将就着用。</p>
+</li>
+<li><p>USE支持 — 这也是要吐槽的一项，因为硬盘的挂载在不知不觉间就会sda-&gt;sdb-&gt;sdc这样切换，设置好的ftp路径，DLNA路径变会无效了。但因为ext驱动的原因，又不能对ntfs格式添加label，于是又无解了。</p>
+</li>
+<li><p>WIFI — WIFI信号太弱应该是下狠心换回DD-WRT的诱因。无论改国家到新加坡、扫描一个没人用的频道、把功率加大，又或者把频宽从80 Mhz改到40 Mhz。曾经能连上WIFI的角落一直扫不出信号。运行一周后，就连能连的2.4G也变得无力，连上后也只能3Mbps, RSI 99 dBm。连最后的昏招，不隐藏SSID试了一点改善也没有。</p>
+</li>
+</ol>
+<p>写到这里并不是说advanced tomato有多不好，可能只是在R6250上表现不佳，毕竟这款路由也是奇葩（当初贪便宜买的）。但目前种种体验倒是令人怀念起DD-WRT（只要不是装了$$，dnsmasq会自杀），保证跑上个把月不是问题。就这样，又回归到DD-WRT的怀抱，希望迟一点能看到DD-WRT也有自己的软件中心，那这样切换$$节点和规则就轻松多了。</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">首页</a></li>
+        
+          <li><a href="/archives/">归档</a></li>
+        
+          <li><a href="/tags/">标签</a></li>
+        
+          <li><a href="/search/">搜索</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://kenmjlee.github.io/01-21-2018/ddwrt-is-a-good-friend-of-r6250/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://kenmjlee.github.io/01-21-2018/ddwrt-is-a-good-friend-of-r6250/&text=Netgear R6250的固件果然还是DD-WRT最相配"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://kenmjlee.github.io/01-21-2018/ddwrt-is-a-good-friend-of-r6250/&title=Netgear R6250的固件果然还是DD-WRT最相配"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://kenmjlee.github.io/01-21-2018/ddwrt-is-a-good-friend-of-r6250/&is_video=false&description=Netgear R6250的固件果然还是DD-WRT最相配"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Netgear R6250的固件果然还是DD-WRT最相配&body=Check out this article: https://kenmjlee.github.io/01-21-2018/ddwrt-is-a-good-friend-of-r6250/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://kenmjlee.github.io/01-21-2018/ddwrt-is-a-good-friend-of-r6250/&title=Netgear R6250的固件果然还是DD-WRT最相配"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://kenmjlee.github.io/01-21-2018/ddwrt-is-a-good-friend-of-r6250/&title=Netgear R6250的固件果然还是DD-WRT最相配"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://kenmjlee.github.io/01-21-2018/ddwrt-is-a-good-friend-of-r6250/&title=Netgear R6250的固件果然还是DD-WRT最相配"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://kenmjlee.github.io/01-21-2018/ddwrt-is-a-good-friend-of-r6250/&title=Netgear R6250的固件果然还是DD-WRT最相配"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://kenmjlee.github.io/01-21-2018/ddwrt-is-a-good-friend-of-r6250/&name=Netgear R6250的固件果然还是DD-WRT最相配&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://kenmjlee.github.io/01-21-2018/ddwrt-is-a-good-friend-of-r6250/&t=Netgear R6250的固件果然还是DD-WRT最相配"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2017-2024
+    林伯
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/tags/">标签</a></li><!--
+     --><!--
+       --><li><a href="/search/">搜索</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
